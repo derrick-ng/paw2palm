@@ -13,15 +13,29 @@ struct ContentView: View {
     //TODO: make animal service file
     let service = AnimalService()
     
+    @State
+    var pets: [PetElement] = []
+    
     var body: some View {
         VStack {
-            Text("Animals Available Text: \n")
+            List{
+                ForEach(pets, id: \.id){ petElement in
+                    Text(petElement.description)
+                }
+            }
         }
         .padding()
         .onAppear(perform: {
             //TODO: make onPetsReturned() and PetElement struct
-            service.fetchAdoptablePets(onPetsReturned: { (pets: [PetElement]) in
-                print(pets)
+            service.fetchAdoptablePets(onPetsReturned: { result in
+                switch result {
+                case .success(let pets):
+                    self.pets = pets
+                case .failure(let error):
+                    print(error)
+                }
+        
+                print(result)
             })
         })
     }
