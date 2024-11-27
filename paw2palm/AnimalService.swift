@@ -7,12 +7,16 @@
 
 import Foundation
 
+enum PetServiceError: Error{
+    case invalidURL, missingData
+}
 struct AnimalService{
     private let baseURL = "https://api.rescuegroups.org/v5/public/animals/search/available/"
     private let apiKey = "gg3wS9or"
 
-    func fetchAdoptablePets(onPetsReturned callback:@escaping ([PetElement])-> Void){
+    func fetchAdoptablePets(onPetsReturned callback:@escaping (Result<[PetElement], any Error>)-> Void){
         guard let url = URL(string: baseURL) else{
+            callback(.failure(PetServiceError.invalidURL))
             //TODO: error handling
             return
         }
@@ -22,18 +26,29 @@ struct AnimalService{
         
         URLSession.shared.dataTask(with: request){ data, response, error in
             //TODO: error handling
+            //error is client side error if lost connection
+            if let error = error{
+                callback(.failure(error))
+            }
+            
+            
             guard let data = data else{
+                callback(.failure(PetServiceError.missingData))
                 return
             }
             
-            do {
+            
                 let decoder = JSONDecoder()
+                
+            do {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let response = try decoder.decode(PetResponse.self, from: data)
                 let pets = response.data
+                callback(.success(pets))
                 print(pets)
             } catch {
                 print("Error decoding JSON: \(error)")
+                callback(.failure(error))
             }
         }.resume()
         
