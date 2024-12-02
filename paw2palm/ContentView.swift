@@ -17,12 +17,20 @@ struct ContentView: View {
     var pets: [PetElement] = []
     
     var body: some View {
-        VStack {
-            List{
+        NavigationStack {
+            //https://developer.apple.com/documentation/swiftui/navigationstack
+            //why is there no VStack here??
+            List {
                 ForEach(pets, id: \.id){ petElement in
-                    Text(petElement.description)
+                    VStack {
+                        Text(petElement.description)
+                        NavigationLink(destination: PetDetailView(pet: petElement)) {
+                            Text("Details")
+                        }
+                    }
                 }
             }
+            .navigationTitle("Adoptale Pets")
         }
         .padding()
         .onAppear(perform: {
@@ -34,11 +42,35 @@ struct ContentView: View {
                 case .failure(let error):
                     print(error)
                 }
-        
                 print(result)
             })
         })
     }
+}
+
+struct PetDetailView: View {
+    let pet: PetElement
+    
+    var body: some View {
+        VStack {
+            Text("Name: \(pet.name)")
+            Text("Breed: \(pet.breedPrimary)")
+            if let birthDate = pet.birthDate {
+                Text("Birthday: \(birthDate)")
+            }
+            if let sex = pet.sex {
+                Text("Sex: \(sex)")
+            }
+            if let sizeGroup = pet.sizeGroup {
+                Text("Size Group: \(sizeGroup)")
+            }
+            if let adoptionFee = pet.adoptionFeeString {
+                Text("Adoption Fee: \(adoptionFee)")
+            }
+        }
+        .navigationTitle("\(pet.name) Details")
+    }
+    
 }
 
 #Preview {
