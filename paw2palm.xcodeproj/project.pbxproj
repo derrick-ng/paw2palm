@@ -14,6 +14,7 @@
 		006EE13E2CE2D660008F7F81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 006EE13D2CE2D660008F7F81 /* Preview Assets.xcassets */; };
 		009098D82CED27EF001F7E4E /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009098D72CED27EF001F7E4E /* AnimalService.swift */; };
 		009098DA2CF5445F001F7E4E /* PetElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009098D92CF5445F001F7E4E /* PetElement.swift */; };
+		00B9FEC72CFEBDD500928CBE /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		006EE13D2CE2D660008F7F81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		009098D72CED27EF001F7E4E /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
 		009098D92CF5445F001F7E4E /* PetElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetElement.swift; sourceTree = "<group>"; };
+		00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				0000E21F2CE2DCF8009BED41 /* README.md */,
 				009098D72CED27EF001F7E4E /* AnimalService.swift */,
 				009098D92CF5445F001F7E4E /* PetElement.swift */,
+				00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */,
 			);
 			path = paw2palm;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				009098D82CED27EF001F7E4E /* AnimalService.swift in Sources */,
+				00B9FEC72CFEBDD500928CBE /* PetDetailView.swift in Sources */,
 				006EE1392CE2D65D008F7F81 /* ContentView.swift in Sources */,
 				009098DA2CF5445F001F7E4E /* PetElement.swift in Sources */,
 				006EE1372CE2D65D008F7F81 /* paw2palmApp.swift in Sources */,

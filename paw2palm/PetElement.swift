@@ -11,6 +11,7 @@ struct PetResponse: Decodable {
     let data: [PetElement]
 }
 
+
 struct PetElement: Decodable, Identifiable, CustomStringConvertible {
     let id: String
     let name: String
@@ -22,7 +23,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible {
     let birthDate: String?
     
     var description: String{
-        "\nPetElement: \n Name: \(name)  \n Breed: \(breedPrimary)\n "
+        "Name: \(name)  \n Breed: \(breedPrimary)\n "
             
     }
     
@@ -55,5 +56,4 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible {
         
     }
 }
-
 

@@ -22,15 +22,33 @@ struct ContentView: View {
             //why is there no VStack here??
             List {
                 ForEach(pets, id: \.id){ petElement in
-                    VStack {
-                        Text(petElement.description)
-                        NavigationLink(destination: PetDetailView(pet: petElement)) {
-                            Text("Details")
+                    if let thumbnailUrl = petElement.pictureThumbnailUrl, let url = URL(string: thumbnailUrl) {
+                        AsyncImage(url: url) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200, height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        } placeholder: {
+                            ProgressView()
+                                .frame(width: 200, height: 200)
                         }
+                    } else {
+                        Text("No Image Available")
+                            .frame(width: 200, height: 200)
+                            .background(Color.gray.opacity(0.3))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
+
+                    Text(petElement.description)
+                    //use navigation stack and navigation destination instead
+                    NavigationLink(destination: PetDetailView(pet: petElement)) {
+                        Text("Details")
+                    }
+                    
                 }
             }
-            .navigationTitle("Adoptale Pets")
+            .navigationTitle("Adoptable Pets")
         }
         .padding()
         .onAppear(perform: {
@@ -48,30 +66,6 @@ struct ContentView: View {
     }
 }
 
-struct PetDetailView: View {
-    let pet: PetElement
-    
-    var body: some View {
-        VStack {
-            Text("Name: \(pet.name)")
-            Text("Breed: \(pet.breedPrimary)")
-            if let birthDate = pet.birthDate {
-                Text("Birthday: \(birthDate)")
-            }
-            if let sex = pet.sex {
-                Text("Sex: \(sex)")
-            }
-            if let sizeGroup = pet.sizeGroup {
-                Text("Size Group: \(sizeGroup)")
-            }
-            if let adoptionFee = pet.adoptionFeeString {
-                Text("Adoption Fee: \(adoptionFee)")
-            }
-        }
-        .navigationTitle("\(pet.name) Details")
-    }
-    
-}
 
 #Preview {
     ContentView()
