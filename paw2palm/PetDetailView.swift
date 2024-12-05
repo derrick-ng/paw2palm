@@ -32,8 +32,12 @@ struct PetDetailView: View {
 
             Text("Name: \(pet.name)")
             Text("Breed: \(pet.breedPrimary)")
+            Text("ID: \(pet.id)")
             if let birthDate = pet.birthDate {
                 Text("Birthday: \(birthDate)")
+            }
+            if let ageString = pet.ageString {
+                Text("Age: \(ageString)")
             }
             if let sex = pet.sex {
                 Text("Sex: \(sex)")
@@ -43,6 +47,9 @@ struct PetDetailView: View {
             }
             if let adoptionFee = pet.adoptionFeeString {
                 Text("Adoption Fee: \(adoptionFee)")
+            }
+            if !pet.pictureIds.isEmpty {
+                Text("Picture Ids: \(pet.pictureIds)")
             }
         }
         .navigationTitle("\(pet.name) Details")
