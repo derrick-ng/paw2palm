@@ -12,7 +12,7 @@ struct PetResponse: Decodable {
 }
 
 
-struct PetElement: Decodable, Identifiable, CustomStringConvertible {
+struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     let id: String
     let name: String
     let breedPrimary: String
@@ -95,4 +95,5 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible {
 struct Picture: Decodable {
     let id: String
 }
+
 

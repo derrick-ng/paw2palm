@@ -56,4 +56,3 @@ struct PetDetailView: View {
     }
     
 }
-
