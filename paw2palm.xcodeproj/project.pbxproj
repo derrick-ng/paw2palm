@@ -15,6 +15,8 @@
 		009098D82CED27EF001F7E4E /* AnimalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009098D72CED27EF001F7E4E /* AnimalService.swift */; };
 		009098DA2CF5445F001F7E4E /* PetElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009098D92CF5445F001F7E4E /* PetElement.swift */; };
 		00B9FEC72CFEBDD500928CBE /* PetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */; };
+		00B9FEE92D02BB2600928CBE /* AllPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B9FEE82D02BB2600928CBE /* AllPetView.swift */; };
+		00B9FEEB2D02BB4B00928CBE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B9FEEA2D02BB4B00928CBE /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		009098D72CED27EF001F7E4E /* AnimalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalService.swift; sourceTree = "<group>"; };
 		009098D92CF5445F001F7E4E /* PetElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetElement.swift; sourceTree = "<group>"; };
 		00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailView.swift; sourceTree = "<group>"; };
+		00B9FEE82D02BB2600928CBE /* AllPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPetView.swift; sourceTree = "<group>"; };
+		00B9FEEA2D02BB4B00928CBE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				009098D72CED27EF001F7E4E /* AnimalService.swift */,
 				009098D92CF5445F001F7E4E /* PetElement.swift */,
 				00B9FEC62CFEBDD500928CBE /* PetDetailView.swift */,
+				00B9FEE82D02BB2600928CBE /* AllPetView.swift */,
+				00B9FEEA2D02BB4B00928CBE /* ProfileView.swift */,
 			);
 			path = paw2palm;
 			sourceTree = "<group>";
@@ -150,10 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B9FEE92D02BB2600928CBE /* AllPetView.swift in Sources */,
 				009098D82CED27EF001F7E4E /* AnimalService.swift in Sources */,
 				00B9FEC72CFEBDD500928CBE /* PetDetailView.swift in Sources */,
 				006EE1392CE2D65D008F7F81 /* ContentView.swift in Sources */,
 				009098DA2CF5445F001F7E4E /* PetElement.swift in Sources */,
+				00B9FEEB2D02BB4B00928CBE /* ProfileView.swift in Sources */,
 				006EE1372CE2D65D008F7F81 /* paw2palmApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
