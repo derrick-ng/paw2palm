@@ -14,6 +14,7 @@ struct PetResponse: Decodable {
 
 struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     let id: String
+    let shortId: String
     let name: String
     let breedPrimary: String
     let pictureThumbnailUrl: String?
@@ -23,6 +24,8 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     let ageString: String?
     var birthDate: String?
     let pictureIds: [String]
+    let orgId: [String]
+    var allPictureUrls: [String] = []
     
     var description: String{
         "Name: \(name)  \n Breed: \(breedPrimary)\n "
@@ -40,10 +43,15 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     }
     
     enum RelationshipsKeys: String, CodingKey {
-        case pictures
+        case pictures, orgs
     }
     
     enum PictureDataKeys: String, CodingKey {
+        case data
+    }
+    
+    //may be redundant?? maybe can just use PictureDataKeys
+    enum OrgDataKeys: String, CodingKey {
         case data
     }
 
@@ -55,6 +63,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try container.decode(String.self, forKey: .id)
+        shortId = String(id.prefix(5))
         
         //parse through attributes
         let attributes = try container.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -73,12 +82,27 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
         
         //so nested, can this be done shorter?
         let relationships = try container.nestedContainer(keyedBy: RelationshipsKeys.self, forKey: .relationships)
+        
         if let pictures = try? relationships.nestedContainer(keyedBy: PictureDataKeys.self, forKey: .pictures),
            let picturesArray = try? pictures.decodeIfPresent([Picture].self, forKey: .data) {
             pictureIds = picturesArray.map {$0.id}
         }
         else {
             pictureIds = []
+        }
+        
+        //could maybe rewrite so it isnt stored as an array, should always have only 1 value for org id
+        if let orgs = try? relationships.nestedContainer(keyedBy: OrgDataKeys.self, forKey: .orgs),
+           let orgsArray = try? orgs.decodeIfPresent([Org].self, forKey: .data) {
+            orgId = orgsArray.map {$0.id}
+        }
+        else {
+            orgId = []
+        }
+        
+        for i in 0..<pictureIds.count {
+            let pictureUrl = "https://cdn.rescuegroups.org/\(orgId[0])/pictures/animals/\(shortId)/\(id)/\(pictureIds[i]).jpg?"
+            allPictureUrls.append(pictureUrl)
         }
         
 //      pictures follow the format:
@@ -96,4 +120,12 @@ struct Picture: Decodable {
     let id: String
 }
 
+struct Org: Decodable {
+    let id: String
+}
 
+//func createPictureUrls(pictureIdArray: Picture, OrgId: Org, shortId: String, id: String) {
+//    for i in range..<pictureIdArray.id.count {
+//
+//    }
+//}

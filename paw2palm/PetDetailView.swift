@@ -52,9 +52,27 @@ struct PetDetailView: View {
             if let adoptionFee = pet.adoptionFeeString {
                 Text("Adoption Fee: \(adoptionFee)")
             }
-            if !pet.pictureIds.isEmpty {
-                Text("Picture Ids: \(pet.pictureIds)")
+//            if !pet.allPictureUrls.isEmpty {
+//                Text("urls: \(pet.allPictureUrls)")
+//            }
+            if !pet.allPictureUrls.isEmpty {
+                VStack {
+                    Text("Additional photos")
+                    ForEach(pet.allPictureUrls, id: \.self) { url in
+                        AsyncImage(url: URL(string: url)) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 350, height: 350)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        } placeholder: {
+                            ProgressView()
+                                .frame(width: 350, height: 350)
+                        }
+                    }
+                }
             }
+            
         }
         
         .navigationTitle("\(pet.name) Details")
