@@ -16,10 +16,10 @@ struct LoginView: View {
     var password = ""
     
     @State
-    var wrongUser = true
+    var wrongUser = false
     
     @State
-    var wrongPassword = true
+    var wrongPassword = false
     
     @State
     var isAuthenticated = false
@@ -38,11 +38,13 @@ struct LoginView: View {
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+                        .border(.red, width: wrongUser ? 2: 0)
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
+                        .border(.red, width: wrongPassword ? 2: 0)
                     Button("Login"){
                         print("Made it into button")
                         
@@ -51,7 +53,7 @@ struct LoginView: View {
                         .frame(width: 300, height: 50)
                         .background(Color.blue)
                         .cornerRadius(10)
-                    
+                    //add a progress view at some point
                    
                     
                     
@@ -59,6 +61,7 @@ struct LoginView: View {
                 .navigationDestination(isPresented: $isAuthenticated){
                                                             HomepageView()
                                                         }
+                
             }.navigationBarHidden(true)
             
             

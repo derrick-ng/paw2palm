@@ -11,17 +11,17 @@ struct PetDetailView: View {
     let pet: PetElement
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             if let thumbnailUrl = pet.pictureThumbnailUrl, let url = URL(string: thumbnailUrl) {
                 AsyncImage(url: url) { image in
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 350, height: 350)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 } placeholder: {
                     ProgressView()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 350, height: 350)
                 }
             } else {
                 Text("No Image Available")
@@ -31,6 +31,10 @@ struct PetDetailView: View {
             }
 
             Text("Name: \(pet.name)")
+                .font(.largeTitle)
+
+                .padding()
+                
             Text("Breed: \(pet.breedPrimary)")
             Text("ID: \(pet.id)")
             if let birthDate = pet.birthDate {
@@ -52,6 +56,7 @@ struct PetDetailView: View {
                 Text("Picture Ids: \(pet.pictureIds)")
             }
         }
+        
         .navigationTitle("\(pet.name) Details")
     }
     
