@@ -29,6 +29,7 @@
 		49B79A7A2D0681C0007F527F /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 49B79A792D0681C0007F527F /* FirebaseAppDistribution-Beta */; };
 		49B79A7D2D0688DC007F527F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 49B79A7C2D0688DC007F527F /* FirebaseFirestore */; };
 		49B79A7F2D069386007F527F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B79A7E2D069383007F527F /* RegisterView.swift */; };
+		49B79A822D06CECB007F527F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 49B79A812D06CECB007F527F /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 				49B79A7A2D0681C0007F527F /* FirebaseAppDistribution-Beta in Frameworks */,
 				49B79A762D0681C0007F527F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				49B79A742D0681C0007F527F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				49B79A822D06CECB007F527F /* FirebaseAuth in Frameworks */,
 				49B79A7D2D0688DC007F527F /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				006EE1352CE2D65D008F7F81 /* paw2palm */,
-				49B79A7B2D0688DC007F527F /* Frameworks */,
 				006EE1342CE2D65D008F7F81 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,13 +115,6 @@
 				006EE13D2CE2D660008F7F81 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		49B79A7B2D0688DC007F527F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +449,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49B79A702D0681C0007F527F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		49B79A812D06CECB007F527F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49B79A702D0681C0007F527F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
