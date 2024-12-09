@@ -25,6 +25,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     var birthDate: String?
     let pictureIds: [String]
     let orgId: [String]
+    let descriptionText: String?
     var allPictureUrls: [String] = []
     
     var description: String{
@@ -76,9 +77,12 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
         sizeGroup = try attributes.decodeIfPresent(String.self, forKey: .sizeGroup)
         ageString = try attributes.decodeIfPresent(String.self, forKey: .ageString)
         birthDate = try attributes.decodeIfPresent(String.self, forKey: .birthDate)
+        descriptionText = try attributes.decodeIfPresent(String.self, forKey: .descriptionText)
         if let unwrapBirthDate = birthDate {
             self.birthDate = String(unwrapBirthDate.prefix(10))
         }
+        
+        
         
         //so nested, can this be done shorter?
         let relationships = try container.nestedContainer(keyedBy: RelationshipsKeys.self, forKey: .relationships)
@@ -123,7 +127,6 @@ struct Picture: Decodable {
 struct Org: Decodable {
     let id: String
 }
-
 //func createPictureUrls(pictureIdArray: Picture, OrgId: Org, shortId: String, id: String) {
 //    for i in range..<pictureIdArray.id.count {
 //
