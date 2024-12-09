@@ -10,12 +10,18 @@ import FirebaseAuth
 
 struct LoginView: View {
     // FROM YT Tutorial: https://www.youtube.com/watch?v=l7obVQObdRM&t=26s
+    
+    //connects the value of userLoggedIn from WelcomeView and LoginView
+    @Binding
+    var userLoggedIn: Bool
+    
     @State
     var email = ""
     
     @State
     var password = ""
     
+    //used to hide the screen when finished using view
     @Environment(\.presentationMode) var presentationMode
     
     @State
@@ -51,7 +57,6 @@ struct LoginView: View {
                     Button("Login"){
                         print("Made it into button")
                         login()
-//                        authentificationUser(username: username, password: password)
                     }              .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .background(Color.blue)
@@ -61,29 +66,8 @@ struct LoginView: View {
                     
                     
                 }
-//                .navigationDestination(isPresented: $isAuthenticated){
-//                                                            HomepageView()
-//                                                        }
-                
             }.navigationBarHidden(true)
-            
-            
         }
-//    
-//        func authentificationUser(username: String, password: String){
-//            if username.lowercased() == "user1"{
-//                wrongUser = false
-//                if password.lowercased() == "1234"{
-//                    wrongPassword = false
-//                    isAuthenticated = true
-//                    print("made it into authentification")
-//                }else{
-//                    wrongPassword = true
-//                }
-//            }else{
-//                wrongUser = true
-//            }
-//        }
            
     func login() {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -92,6 +76,7 @@ struct LoginView: View {
             }
             else {
                 print("login success")
+                userLoggedIn = true
                 presentationMode.wrappedValue.dismiss()
             }
         }

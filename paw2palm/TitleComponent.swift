@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//do i just change this to TitleView????
 struct TitleComponent: View {
     var body: some View {
         Text("paw2palm")

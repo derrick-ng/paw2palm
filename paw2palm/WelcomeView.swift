@@ -19,9 +19,6 @@ struct WelcomeView: View {
     @State
     var userLoggedIn = false
     
-    @State
-    var authListenerHandle: AuthStateDidChangeListenerHandle?
-    
     var body: some View {
         Group {
             if userLoggedIn {
@@ -31,23 +28,17 @@ struct WelcomeView: View {
                 content
             }
         }
-//        .onAppear {
-//            setupAuthListener()
-//        }
-//        .onDisappear {
-//            removeAuthListener()
-//        }
     }
     
     var content: some View {
         VStack {
-            TitleComponent()
             Text("Maybe an image here")
             Button("Login") {
                 showLoginView = true
             }
             .sheet(isPresented: $showLoginView) {
-                LoginView()
+                //throw in a bool(userLoggedIn) into LoginView, on success -> return true ??
+                LoginView(userLoggedIn: $userLoggedIn)
             }
             
             Button("Sign Up") {
@@ -57,29 +48,5 @@ struct WelcomeView: View {
                 RegisterView()
             }
         }
-//        .onAppear() {
-//            Auth.auth().addStateDidChangeListener { auth, user in
-//                if let user = user {
-//                    userLoggedIn.toggle()
-//                }
-//            }
-//        }
-//        .onDisappear {
-//            if let handle = authListenerHandle {
-//                Auth.auth().removeStateDidChangeListener(handle) // Clean up the listener when the view disappears
-//            }
-//        }
-        
     }
-//    private func setupAuthListener() {
-//       authListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
-//           userLoggedIn = (user != nil)
-//       }
-//   }
-//   
-//   private func removeAuthListener() {
-//       if let handle = authListenerHandle {
-//           Auth.auth().removeStateDidChangeListener(handle)
-//       }
-//   }
 }
