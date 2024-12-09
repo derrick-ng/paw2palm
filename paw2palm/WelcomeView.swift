@@ -31,12 +31,12 @@ struct WelcomeView: View {
                 content
             }
         }
-        .onAppear {
-            setupAuthListener()
-        }
-        .onDisappear {
-            removeAuthListener()
-        }
+//        .onAppear {
+//            setupAuthListener()
+//        }
+//        .onDisappear {
+//            removeAuthListener()
+//        }
     }
     
     var content: some View {
@@ -71,15 +71,15 @@ struct WelcomeView: View {
 //        }
         
     }
-    private func setupAuthListener() {
-       authListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
-           userLoggedIn = (user != nil)
-       }
-   }
-   
-   private func removeAuthListener() {
-       if let handle = authListenerHandle {
-           Auth.auth().removeStateDidChangeListener(handle)
-       }
-   }
+//    private func setupAuthListener() {
+//       authListenerHandle = Auth.auth().addStateDidChangeListener { _, user in
+//           userLoggedIn = (user != nil)
+//       }
+//   }
+//   
+//   private func removeAuthListener() {
+//       if let handle = authListenerHandle {
+//           Auth.auth().removeStateDidChangeListener(handle)
+//       }
+//   }
 }
