@@ -22,7 +22,7 @@ struct WelcomeView: View {
     var body: some View {
         Group {
             if userLoggedIn {
-                HomepageView()
+                HomepageView(userLoggedIn: $userLoggedIn)
             }
             else {
                 content

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomepageView: View {
     
+    @Binding
+    var userLoggedIn: Bool
+    
     @State
     var path = [PetElement]()
     
@@ -32,7 +35,7 @@ struct HomepageView: View {
                     Text("Adoptable Pets")
                 }.tag(1)
             
-            ProfileView()
+            ProfileView(userLoggedIn: $userLoggedIn)
                 .navigationTitle("Profile")
                 .tabItem {
                     Image(systemName: "person.fill")
