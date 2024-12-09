@@ -13,7 +13,6 @@ struct ContentView: View {
 //        LoginView()
 //        HomepageView()
         WelcomeView()
-        
     }
 
     
