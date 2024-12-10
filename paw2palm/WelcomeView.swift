@@ -32,11 +32,19 @@ struct WelcomeView: View {
     
     var content: some View {
         VStack {
-            Text("Maybe an image here")
+            Image(.IMG_7587)
+                .resizable()
+               .aspectRatio(contentMode: .fit)
+               .clipShape(RoundedRectangle(cornerRadius: 25))
+               .padding()
             Button("Login") {
                 showLoginView = true
             }
-            .sheet(isPresented: $showLoginView) {
+                .foregroundColor(.white)
+                .frame(width: 300, height: 50)
+                .background(Color.cyan)
+                .cornerRadius(10)
+                .sheet(isPresented: $showLoginView) {
                 //throw in a bool(userLoggedIn) into LoginView, on success -> return true ??
                 LoginView(userLoggedIn: $userLoggedIn)
             }
@@ -44,6 +52,10 @@ struct WelcomeView: View {
             Button("Sign Up") {
                 showRegisterView = true
             }
+            .foregroundColor(.white)
+                .frame(width: 300, height: 50)
+                .background(Color.blue)
+                .cornerRadius(10)
             .sheet(isPresented: $showRegisterView) {
                 RegisterView()
             }

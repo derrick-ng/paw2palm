@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TitleComponent()
+//        TitleComponent()
 //        LoginView()
 //        HomepageView()
         WelcomeView()

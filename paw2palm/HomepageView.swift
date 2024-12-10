@@ -19,7 +19,7 @@ struct HomepageView: View {
     var selectedTab: Int = 1
     
     var body: some View {
-        
+        TitleComponent()
         TabView(selection: $selectedTab){
             NavigationStack(path: $path){
                 AllPetView(onNavigationPressed: {petElement in
