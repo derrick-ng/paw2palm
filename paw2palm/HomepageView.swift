@@ -12,6 +12,9 @@ struct HomepageView: View {
     @Binding
     var userLoggedIn: Bool
     
+    @Binding
+    var email: String
+    
     @State
     var path = [PetElement]()
     
@@ -35,7 +38,7 @@ struct HomepageView: View {
                     Text("Adoptable Pets")
                 }.tag(1)
             
-            ProfileView(userLoggedIn: $userLoggedIn)
+            ProfileView(userLoggedIn: $userLoggedIn, email: $email)
                 .navigationTitle("Profile")
                 .tabItem {
                     Image(systemName: "person.fill")

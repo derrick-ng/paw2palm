@@ -19,10 +19,13 @@ struct WelcomeView: View {
     @State
     var userLoggedIn = false
     
+    @State
+    var email = ""
+    
     var body: some View {
         Group {
             if userLoggedIn {
-                HomepageView(userLoggedIn: $userLoggedIn)
+                HomepageView(userLoggedIn: $userLoggedIn, email: $email)
             }
             else {
                 content
@@ -46,7 +49,7 @@ struct WelcomeView: View {
                 .cornerRadius(10)
                 .sheet(isPresented: $showLoginView) {
                 //throw in a bool(userLoggedIn) into LoginView, on success -> return true ??
-                LoginView(userLoggedIn: $userLoggedIn)
+                    LoginView(userLoggedIn: $userLoggedIn, email: $email)
             }
             
             Button("Sign Up") {

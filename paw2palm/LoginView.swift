@@ -15,8 +15,8 @@ struct LoginView: View {
     @Binding
     var userLoggedIn: Bool
     
-    @State
-    var email = ""
+    @Binding
+    var email: String
     
     @State
     var password = ""

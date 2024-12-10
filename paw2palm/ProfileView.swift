@@ -12,6 +12,9 @@ struct ProfileView: View {
     @Binding
     var userLoggedIn: Bool
     
+    @Binding
+    var email: String
+    
     var body: some View {
         VStack {
             Text("User Profile")
@@ -29,5 +32,10 @@ struct ProfileView: View {
         } catch let error as NSError {
             print("error in logout: \(error.localizedDescription)")
         }
+    }
+    
+    func parseEmail(userEmail: String) -> String? {
+            let emails = userEmail.components(separatedBy: "@")
+            return emails.first
     }
 }
