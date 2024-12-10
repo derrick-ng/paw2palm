@@ -17,7 +17,6 @@ struct AnimalService{
     func fetchAdoptablePets(onPetsReturned callback:@escaping (Result<[PetElement], any Error>)-> Void){
         guard let url = URL(string: baseURL) else{
             callback(.failure(PetServiceError.invalidURL))
-            //TODO: error handling
             return
         }
         
@@ -25,13 +24,12 @@ struct AnimalService{
         request.addValue(apiKey, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request){ data, response, error in
-            //TODO: error handling
             //error is client side error if lost connection
             if let error = error{
                 callback(.failure(error))
             }
             
-            
+            // error if there is missing dats
             guard let data = data else{
                 callback(.failure(PetServiceError.missingData))
                 return
@@ -40,6 +38,7 @@ struct AnimalService{
             
                 let decoder = JSONDecoder()
                 
+            //attempt decoding data of pets 
             do {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let response = try decoder.decode(PetResponse.self, from: data)

@@ -39,7 +39,6 @@ struct AllPetView: View {
                 }
                 
                 Text(petElement.description)
-                //use navigation stack and navigation destination instead
                 
                 
                 Button("Details"){
@@ -51,7 +50,6 @@ struct AllPetView: View {
             
         }
         .onAppear(perform: {
-            //TODO: make onPetsReturned() and PetElement struct
             service.fetchAdoptablePets(onPetsReturned: { result in
                 switch result {
                 case .success(let pets):

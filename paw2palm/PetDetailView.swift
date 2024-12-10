@@ -41,6 +41,9 @@ struct PetDetailView: View {
                 if let birthDate = pet.birthDate {
                     Text("Birthday: \(birthDate)")
                 }
+                if let cityState = pet.cityState{
+                    Text("City, State: \(cityState)")
+                }
                 if let ageString = pet.ageString {
                     Text("Age: \(ageString)")
                 }

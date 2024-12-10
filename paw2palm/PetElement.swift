@@ -23,6 +23,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     let sizeGroup: String?
     let ageString: String?
     var birthDate: String?
+    let cityState: String?
     let pictureIds: [String]
     let orgId: [String]
     let descriptionText: String?
@@ -40,7 +41,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     }
     
     enum AttributesKeys: String, CodingKey {
-        case name, ageGroup, breedPrimary, descriptionText, pictureThumbnailUrl, adoptionFeeString, sex, sizeGroup, ageString, birthDate
+        case name, ageGroup, breedPrimary, descriptionText, pictureThumbnailUrl, adoptionFeeString, sex, sizeGroup, ageString, birthDate, cityState
     }
     
     enum RelationshipsKeys: String, CodingKey {
@@ -66,7 +67,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
         id = try container.decode(String.self, forKey: .id)
         shortId = String(id.prefix(5))
         
-        //parse through attributes
+        // go through attributes
         let attributes = try container.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
         
@@ -78,6 +79,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
         ageString = try attributes.decodeIfPresent(String.self, forKey: .ageString)
         birthDate = try attributes.decodeIfPresent(String.self, forKey: .birthDate)
         descriptionText = try attributes.decodeIfPresent(String.self, forKey: .descriptionText)
+        cityState =  try attributes.decodeIfPresent(String.self, forKey: .cityState)
         if let unwrapBirthDate = birthDate {
             self.birthDate = String(unwrapBirthDate.prefix(10))
         }
