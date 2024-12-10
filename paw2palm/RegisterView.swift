@@ -16,6 +16,9 @@ struct RegisterView: View {
     @State
     var password = ""
     
+    @State
+    var errorMessage: String?
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -29,6 +32,10 @@ struct RegisterView: View {
                 .padding()
                 .frame(width: 300, height: 50)
                 .background(Color.black.opacity(0.05))
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+            }
+            
             Button("Register") {
                 register()
             }
@@ -39,6 +46,7 @@ struct RegisterView: View {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("error in registration: \(error.localizedDescription)")
+                errorMessage = error.localizedDescription
             }
             else {
                 print("registration success")

@@ -21,6 +21,9 @@ struct LoginView: View {
     @State
     var password = ""
     
+    @State
+    var errorMessage: String?
+    
     //used to hide the screen when finished using view
     @Environment(\.presentationMode) var presentationMode
     
@@ -54,6 +57,9 @@ struct LoginView: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
 //                        .border(.red, width: wrongPassword ? 2: 0)
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                    }
                     Button("Login"){
                         print("Made it into button")
                         login()
@@ -73,6 +79,7 @@ struct LoginView: View {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("error in login: \(error.localizedDescription)")
+                errorMessage = error.localizedDescription
             }
             else {
                 print("login success")
