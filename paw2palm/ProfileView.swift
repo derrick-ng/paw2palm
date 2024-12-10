@@ -17,7 +17,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack {
-            Text("User Profile")
+            Text("\(parseEmail(userEmail: email) ?? "")'s Profile")
             Button("Sign Out") {
                 logout()
             }
@@ -35,7 +35,7 @@ struct ProfileView: View {
     }
     
     func parseEmail(userEmail: String) -> String? {
-            let emails = userEmail.components(separatedBy: "@")
-            return emails.first
+            let emailComponents = userEmail.components(separatedBy: "@")
+            return emailComponents.first
     }
 }
