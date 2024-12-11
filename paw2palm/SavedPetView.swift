@@ -1,38 +1,23 @@
 //
-//  AllPetView.swift
+//  SavedPetView.swift
 //  paw2palm
 //
-//  Created by Robin Pilapil on 12/5/24.
+//  Created by Robin Pilapil on 12/11/24.
 //
 
 import SwiftUI
 
-struct AllPetView: View {
-    
-    var onNavigationPressed: (PetElement) -> Void
-    
-    let service = AnimalService()
-    
-    @State
-    var pets: [PetElement] = []
-    
+
+struct SavedPetView: View {
     @Binding
-    var savedPets: [PetElement] 
-    
+    var savedPets: [PetElement]
+    var onNavigationPressed: (PetElement) -> Void
     var body: some View {
-        VStack{
+       
+        VStack {
             List {
-                ForEach(pets, id: \.id){ petElement in
-                    Button("Save"){
-                        savedPets.append(petElement)
-                        print("Saved Pets: \(savedPets)")
-                    }.font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.lightPink)
-                        .cornerRadius(8)
-                    VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+                ForEach(savedPets, id: \.id) { petElement in
+                    VStack(alignment: .leading, spacing: 10) {
                         if let thumbnailUrl = petElement.pictureThumbnailUrl, let url = URL(string: thumbnailUrl) {
                             AsyncImage(url: url) { image in
                                 image
@@ -40,7 +25,6 @@ struct AllPetView: View {
                                     .scaledToFill()
                                     .frame(width: 330, height: 330)
                                     .clipShape(RoundedRectangle(cornerRadius: 5))
-                                
                             } placeholder: {
                                 ProgressView()
                                     .frame(width: 200, height: 200)
@@ -58,7 +42,6 @@ struct AllPetView: View {
                         Text("Breed: \(petElement.breedPrimary)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        
                         Button("Details"){
                             onNavigationPressed(petElement)
                         }.font(.headline)
@@ -68,26 +51,10 @@ struct AllPetView: View {
                             .background(Color.niceBlue)
                             .cornerRadius(8)
                         
-                      
-                            
                     }
+                    .padding(.vertical, 5)
                 }
-                
-                
             }
         }
-        .onAppear(perform: {
-            service.fetchAdoptablePets(onPetsReturned: { result in
-                switch result {
-                case .success(let pets):
-                    self.pets = pets
-                case .failure(let error):
-                    print(error)
-                }
-                print(result)
-            })
-        })
     }
 }
-
-

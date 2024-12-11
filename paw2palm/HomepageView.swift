@@ -21,29 +21,39 @@ struct HomepageView: View {
     @State
     var selectedTab: Int = 1
     
+    @Binding
+    var savedPets: [PetElement]
+    
     var body: some View {
         TitleComponent()
         TabView(selection: $selectedTab){
             NavigationStack(path: $path){
                 AllPetView(onNavigationPressed: {petElement in
                     path.append(petElement)
-                }).navigationDestination(for: PetElement.self){ petElement in
+                }, savedPets: $savedPets).navigationDestination(for: PetElement.self){ petElement in
                     PetDetailView(pet: petElement)
                 }
                     
             }
-            .navigationTitle("Adoptable Pets")
+                .navigationTitle("Adoptable Pets")
+                    .tabItem {
+                        Image(systemName: "dog.fill")
+                        Text("Adoptable Pets")
+                    }.tag(1)
+            SavedPetView(savedPets: $savedPets, onNavigationPressed: {petElement in
+                path.append(petElement)}
+            )
+                .navigationTitle("Saved Pets!")
                 .tabItem {
-                    Image(systemName: "dog.fill")
-                    Text("Adoptable Pets")
-                }.tag(1)
-            
+                    Image(systemName: "heart.fill")
+                    Text("Saved")
+                }.tag(2)
             ProfileView(userLoggedIn: $userLoggedIn, email: $email)
                 .navigationTitle("Profile")
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
-                }.tag(2)
+                }.tag(3)
         }
          
     }

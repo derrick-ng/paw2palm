@@ -22,10 +22,13 @@ struct WelcomeView: View {
     @State
     var email = ""
     
+    @State
+    var savedPets: [PetElement] = []
+    
     var body: some View {
         Group {
             if userLoggedIn {
-                HomepageView(userLoggedIn: $userLoggedIn, email: $email)
+                HomepageView(userLoggedIn: $userLoggedIn, email: $email, savedPets: $savedPets)
             }
             else {
                 content
