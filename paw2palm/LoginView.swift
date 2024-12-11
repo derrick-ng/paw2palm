@@ -45,6 +45,20 @@ struct LoginView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding()
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                           .font(.footnote)
+                           .multilineTextAlignment(.center)
+                           .padding()
+                           .background(Color.gray.opacity(0.2)) // Light gray background
+                           .cornerRadius(10)
+                           .overlay(
+                               RoundedRectangle(cornerRadius: 10)
+                                   .stroke(Color.gray, lineWidth: 1) // Light gray border
+                           )
+                           .padding(.top, 10)
+                    }
                     TextField("Email", text: $email)
                         .padding()
                         .frame(width: 300, height: 50)
@@ -57,11 +71,8 @@ struct LoginView: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(10)
 //                        .border(.red, width: wrongPassword ? 2: 0)
-                    if let errorMessage = errorMessage {
-                        Text(errorMessage)
-                    }
+                    
                     Button("Login"){
-                        print("Made it into button")
                         login()
                     }              .foregroundColor(.white)
                         .frame(width: 300, height: 50)
@@ -73,6 +84,8 @@ struct LoginView: View {
                     
                 }
             }.navigationBarHidden(true)
+        
+            
         }
            
     func login() {

@@ -78,19 +78,27 @@ struct PetDetailView: View {
                 if !pet.allPictureUrls.isEmpty {
                     VStack {
                         Spacer()
-                        Text("Additional photos: ")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        ForEach(pet.allPictureUrls, id: \.self) { url in
-                            AsyncImage(url: URL(string: url)) { image in
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 350, height: 350)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            } placeholder: {
-                                ProgressView()
-                                    .frame(width: 350, height: 350)
+                        Text("Additional Photos")
+                            .font(.title)
+                            .padding(.bottom, 10)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                ForEach(pet.allPictureUrls, id: \.self) { url in
+                                    AsyncImage(url: URL(string: url)) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 300, height: 300)
+                                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                                            .shadow(radius: 5)
+                                    } placeholder: {
+                                        ProgressView()
+                                            .frame(width: 300, height: 300)
+                                    }
+                                }
                             }
+                            .padding()
                         }
                     }
                 }
