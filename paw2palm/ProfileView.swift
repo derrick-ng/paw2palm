@@ -15,12 +15,22 @@ struct ProfileView: View {
     @Binding
     var email: String
     
+    @State
+    var bio: String = ""
+    
     var body: some View {
         VStack {
             Text("\(parseEmail(userEmail: email) ?? "")'s Profile")
+            TextEditor(text: $bio)
+            Button("Save") {
+                saveBio()
+            }
             Button("Sign Out") {
                 logout()
             }
+        }
+        .onAppear() {
+            fetchBio()
         }
     }
     
@@ -35,7 +45,20 @@ struct ProfileView: View {
     }
     
     func parseEmail(userEmail: String) -> String? {
-            let emailComponents = userEmail.components(separatedBy: "@")
-            return emailComponents.first
+        let emailComponents = userEmail.components(separatedBy: "@")
+        return emailComponents.first
+    }
+    
+    func fetchBio() {
+        let defaults = UserDefaults.standard
+        if let savedBio = defaults.string(forKey: "\(email)bio") {
+            bio = savedBio
+        }
+    }
+    
+    func saveBio() {
+        let defaults = UserDefaults.standard
+        defaults.set(bio, forKey: "\(email)bio")
+        print("biography save success")
     }
 }
