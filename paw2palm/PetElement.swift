@@ -30,7 +30,7 @@ struct PetElement: Decodable, Identifiable, CustomStringConvertible, Hashable {
     var allPictureUrls: [String] = []
     
     var description: String{
-        "Name: \(name)  \n Breed: \(breedPrimary)\n "
+        "Name: \(name)\nBreed: \(breedPrimary)\n"
             
     }
     

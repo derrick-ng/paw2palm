@@ -17,38 +17,49 @@ struct AllPetView: View {
     var pets: [PetElement] = []
     
     var body: some View {
-        
-        List {
-            ForEach(pets, id: \.id){ petElement in
-                if let thumbnailUrl = petElement.pictureThumbnailUrl, let url = URL(string: thumbnailUrl) {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
+        VStack{
+            List {
+                ForEach(pets, id: \.id){ petElement in
+                    if let thumbnailUrl = petElement.pictureThumbnailUrl, let url = URL(string: thumbnailUrl) {
+                        AsyncImage(url: url) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200, height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                        } placeholder: {
+                            ProgressView()
+                                .frame(width: 200, height: 200)
+                        }
+                    } else {
+                        Text("No Image Available")
                             .frame(width: 200, height: 200)
+                            .background(Color.gray.opacity(0.3))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: 200, height: 200)
                     }
-                } else {
-                    Text("No Image Available")
-                        .frame(width: 200, height: 200)
-                        .background(Color.gray.opacity(0.3))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    Text(petElement.name)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text("Breed: \(petElement.breedPrimary)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    
+                    Button("Details"){
+                        onNavigationPressed(petElement)
+                    }.font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                    
                 }
                 
-                Text(petElement.description)
-                
-                
-                Button("Details"){
-                    onNavigationPressed(petElement)
-                }
                 
             }
-                
-            
-        }
+        }.background(Color.blue)
         .onAppear(perform: {
             service.fetchAdoptablePets(onPetsReturned: { result in
                 switch result {

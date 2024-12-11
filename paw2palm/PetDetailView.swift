@@ -31,38 +31,47 @@ struct PetDetailView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 
-                Text("Name: \(pet.name)")
-                    .font(.largeTitle)
+                Text(pet.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+               
                 
-                    .padding()
-                
-                Text("Breed: \(pet.breedPrimary)")
-                Text("ID: \(pet.id)")
-                if let birthDate = pet.birthDate {
-                    Text("Birthday: \(birthDate)")
-                }
-                if let cityState = pet.cityState{
-                    Text("City, State: \(cityState)")
-                }
-                if let ageString = pet.ageString {
-                    Text("Age: \(ageString)")
-                }
-                if let sex = pet.sex {
-                    Text("Sex: \(sex)")
-                }
-                if let sizeGroup = pet.sizeGroup {
-                    Text("Size Group: \(sizeGroup)")
-                }
+                VStack{
+                    Text("Breed: \(pet.breedPrimary)")
+                           
+                    Text("ID: \(pet.id)")
+                    if let birthDate = pet.birthDate {
+                        Text("Birthday: \(birthDate)")
+                    }
+                    if let cityState = pet.cityState{
+                        Text("City, State: \(cityState)")
+                    }
+                    if let ageString = pet.ageString {
+                        Text("Age: \(ageString)")
+                    }
+                    if let sex = pet.sex {
+                        Text("Sex: \(sex)")
+                    }
+                    if let sizeGroup = pet.sizeGroup {
+                        Text("Size Group: \(sizeGroup)")
+                    }
+                    if let adoptionFee = pet.adoptionFeeString {
+                                        Text("Adoption Fee: \(adoptionFee)")
+                                       
+                                    }
+                    
+                }.font(.headline)
+                .foregroundStyle(.secondary)
+                    
                 if let descriptionText = pet.descriptionText{
-                    Text("Description:\n \(descriptionText)")
+                    Text("Description:\n\(descriptionText)")
                         
                         .padding()
                         
+                        
                 }
-                if let adoptionFee = pet.adoptionFeeString {
-                    Text("Adoption Fee: \(adoptionFee)")
-                    Spacer()
-                }
+                Spacer()
+                
                 //            if !pet.allPictureUrls.isEmpty {
                 //                Text("urls: \(pet.allPictureUrls)")
                 //            }
