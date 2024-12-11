@@ -25,8 +25,8 @@ struct AllPetView: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 200, height: 200)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .frame(width: 330, height: 330)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
                                 
                         } placeholder: {
                             ProgressView()
@@ -52,14 +52,14 @@ struct AllPetView: View {
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.niceBlue)
                         .cornerRadius(8)
                     
                 }
                 
                 
             }
-        }.background(Color.blue)
+        }
         .onAppear(perform: {
             service.fetchAdoptablePets(onPetsReturned: { result in
                 switch result {

@@ -28,7 +28,7 @@ struct ProfileView: View {
                     .fill(Color.black.opacity(0.3))
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 100)
                 
-                Text("\(parseEmail(userEmail: email) ?? "")'s Profile")
+                Text("\(parseEmail(userEmail: email) ?? "")")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             }.padding()
@@ -47,19 +47,23 @@ struct ProfileView: View {
                                            RoundedRectangle(cornerRadius: 10)
                                                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
                                        )
+                
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
                    
                     Button("Save") {
                         saveBio()
                     } .foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .background(Color.blue)
+                        .frame(width: 100, height: 50)
+                        .background(Color.niceBlue)
                         .cornerRadius(10)
+                    
+                    Spacer()
+
                     Button("Sign Out") {
                         logout()
                     } .foregroundColor(.white)
                         .frame(width: 300, height: 50)
-                        .background(Color.blue)
+                        .background(Color.lightPink)
                         .cornerRadius(10)
                 }
             }

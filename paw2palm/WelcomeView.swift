@@ -45,7 +45,7 @@ struct WelcomeView: View {
             }
                 .foregroundColor(.white)
                 .frame(width: 300, height: 50)
-                .background(Color.cyan)
+                .background(Color.niceBlue)
                 .cornerRadius(10)
                 .sheet(isPresented: $showLoginView) {
                 //throw in a bool(userLoggedIn) into LoginView, on success -> return true ??
@@ -57,7 +57,7 @@ struct WelcomeView: View {
             }
             .foregroundColor(.white)
                 .frame(width: 300, height: 50)
-                .background(Color.blue)
+                .background(Color.lightPink)
                 .cornerRadius(10)
             .sheet(isPresented: $showRegisterView) {
                 RegisterView()

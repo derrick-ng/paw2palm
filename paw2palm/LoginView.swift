@@ -76,7 +76,7 @@ struct LoginView: View {
                         login()
                     }              .foregroundColor(.white)
                         .frame(width: 300, height: 50)
-                        .background(Color.blue)
+                        .background(Color.niceBlue)
                         .cornerRadius(10)
                     //add a progress view at some point
                    
@@ -105,3 +105,4 @@ struct LoginView: View {
       
     
 }
+

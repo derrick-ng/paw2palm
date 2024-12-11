@@ -56,7 +56,7 @@ struct RegisterView: View {
                 register()
             }.foregroundColor(.white)
                 .frame(width: 300, height: 50)
-                .background(Color.blue)
+                .background(Color.lightPink)
                 .cornerRadius(10)
         }
     }

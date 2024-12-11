@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0000E2202CE2DCF8009BED41 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0000E21F2CE2DCF8009BED41 /* README.md */; };
+		003D72782D0A140000A037BC /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003D72772D0A140000A037BC /* ColorExtension.swift */; };
 		006EE1372CE2D65D008F7F81 /* paw2palmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE1362CE2D65D008F7F81 /* paw2palmApp.swift */; };
 		006EE1392CE2D65D008F7F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EE1382CE2D65D008F7F81 /* ContentView.swift */; };
 		006EE13B2CE2D660008F7F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 006EE13A2CE2D660008F7F81 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		0000E21F2CE2DCF8009BED41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		003D72772D0A140000A037BC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		006EE1332CE2D65D008F7F81 /* paw2palm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paw2palm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		006EE1362CE2D65D008F7F81 /* paw2palmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paw2palmApp.swift; sourceTree = "<group>"; };
 		006EE1382CE2D65D008F7F81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				49B79A6C2D067161007F527F /* TitleComponent.swift */,
 				00B9FEEE2D03F53300928CBE /* HomepageView.swift */,
 				49B79A6E2D0680F2007F527F /* GoogleService-Info.plist */,
+				003D72772D0A140000A037BC /* ColorExtension.swift */,
 			);
 			path = paw2palm;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				49B79A7F2D069386007F527F /* RegisterView.swift in Sources */,
 				00B9FEED2D039FE200928CBE /* LoginView.swift in Sources */,
 				006EE1372CE2D65D008F7F81 /* paw2palmApp.swift in Sources */,
+				003D72782D0A140000A037BC /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
